@@ -1,3 +1,11 @@
+== Welcome to iScoutr
+
+iScoutr is a simple web application to track scouts rank advancement and their merit badges.
+It will also allow you to set goals for them and track progress.
+
+This project is just getting started and has almost nothing in it, but a skeleton Rails app.
+
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
