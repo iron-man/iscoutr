@@ -1,0 +1,44 @@
+<table id="meritbadge_list">
+	<thead>
+  <tr>
+	<td>Image</td>
+    <th>Name</th>
+    <th>Date Obsoleted</th>
+	<th>Enroll in Meritbadge?</th>
+  </tr>
+	<thead>
+	<tbody>	
+<% meritbadge_list.each do |meritbadge| %>
+  <%- unless meritbadge.removed_date.nil? %>
+  <tr class="obsoleted">
+  <%- else %>
+  <tr>
+  <%- end -%>
+	<td><%= image_tag(meritbadge.image_url, :size => "75x75") unless meritbadge.removed_date %></td>
+    <td><%= link_to meritbadge.name, meritbadge %></td>
+	<td><%= meritbadge.removed_date %></td>
+	<%- if status && status[0].scouter_id == scouter.id && status[0].meritbadge_id == meritbadge.id -%>
+		<td><button disabled="disabled">Enrolled!</button></td>
+	<%- elsif status[0].completed_date -%>
+		<td><button disabled="disabled">Completed</button></td>	
+	<%- elsif meritbadge.removed_date -%>
+		<td><button disabled="disabled">Obsolete</button></td>
+	<%- else -%>
+	<td><%= button_to "Enroll", {:controller => "meritbadges", 
+								 :action => "enroll", 
+								 :meritbadge_id => meritbadge.id,
+								 :scouter_id => scouter.id } %></td>
+	<%- end -%>							
+  </tr>
+<% end %>
+</tbody>
+</table>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$('#meritbadge_list').dataTable({
+				"sPaginationType": "full_numbers",
+				"bJQueryUI": true,
+				"aaSorting": [[ 1, "asc" ]]
+		});
+	});
+</script>

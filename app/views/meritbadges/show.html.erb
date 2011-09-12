@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Name: <%= @meritbadge.name %></h1>
+
+<h2>Requirements: </h2>
+<table>
+	<thead>
+		<th>Designator</th>
+		<th>Description</th>
+		<th>Goal</th>
+		<th>Completed Date</th>
+	</thead>
+	<tbody>
+	<%- @requirements.each do |r| -%>
+		<tr>
+			<td><%= r.designation %></td>
+			<td><%= r.description %></td>
+			<td><%= r.goal %></td>
+			<td><%= r.completed_date %></td>
+		</tr>
+	<%- end -%>
+	</tbody>
+</table>
+	
+<%= link_to 'Edit', edit_meritbadge_path(@meritbadge) %> |
+<%= link_to 'Back', meritbadges_path %>

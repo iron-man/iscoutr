@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @scout_master.name %>
+</p>
+
+<p>
+  <b>Troop number:</b>
+  <%= @scout_master.troop_number %>
+</p>
+<h3><%= @scout_master.name.possessive %> Scouts</h3>
+<ul>
+<%-  @scout_master.scouters.each do |scout| -%>
+	<li>
+		<%= link_to scout.name, scout %>
+	</li>
+<%- end -%>
+</ul>
+
+<%= link_to 'Edit', edit_scout_master_path(@scout_master) %> |
+<%= link_to 'Back', scout_masters_path %>

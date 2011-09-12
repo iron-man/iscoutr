@@ -1,0 +1,31 @@
+<h1>Listing requirements</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Goal</th>
+    <th>Completed</th>
+    <th>Completed date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @requirements.each do |requirement| %>
+  <tr>
+    <td><%= requirement.name %></td>
+    <td><%= requirement.description %></td>
+    <td><%= requirement.goal %></td>
+    <td><%= requirement.completed %></td>
+    <td><%= requirement.completed_date %></td>
+    <td><%= link_to 'Show', requirement %></td>
+    <td><%= link_to 'Edit', edit_requirement_path(requirement) %></td>
+    <td><%= link_to 'Destroy', requirement, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Requirement', new_requirement_path %>

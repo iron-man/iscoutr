@@ -1,0 +1,130 @@
+body { background-color: #fff; color: #333; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+body {
+	background-color: #CC9;
+}
+#content {
+	background-color: #FFF;
+	margin: 2em;
+	padding: 1.2em;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 0 5px 5px #888;
+	-webkit-box-shadow: 0 0 5px 5px#888;
+	box-shadow: 0 0 5px 5px #888;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+.obsoleted {
+/*	background-color: lightblue;*/
+	color: darkgray;
+}
+.obsoleted a {
+	color: darkgray	;
+}
+#scouter_wrapper {
+	width: 650px;
+}
+#scouter_list {
+	width: 100%;
+}
+#scouter_info {
+	background-color: whitesmoke;
+	width: 780px;
+	height: 200px;
+	padding-top: 3em;
+	font-size: 1.4em;
+	border: 1px solid gray;
+	position: relative;
+}
+#scouter_info label {
+	width: 300px;
+	margin-left: 15px;
+	padding: 4px;
+	display: inline-block;
+	text-align:right;
+	font-weight: bold;
+}
+#scouter_info .link_bar {
+	position: absolute;
+	bottom: 5px;
+	left: 5px;
+}
+#scouter_avatar {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+}
+#meritbadge_list_wrapper {
+	width: 780px;
+/*	background-color: #FFF;*/
+}
+#meritbadge_list_paginate {
+ width: 370px !important;	
+}
+#meritbadge_list {
+	width: 100% !important;
+}
+#meritbadge_list tbody tr {
+	height: 79px;
+}
+#scout_master {
+	position: absolute;
+	top: 10px;
+	right: 5px;
+}

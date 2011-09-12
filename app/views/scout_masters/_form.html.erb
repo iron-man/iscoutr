@@ -1,0 +1,25 @@
+<%= form_for(@scout_master) do |f| %>
+  <% if @scout_master.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scout_master.errors.count, "error") %> prohibited this scout_master from being saved:</h2>
+
+      <ul>
+      <% @scout_master.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :troop_number %><br />
+    <%= f.text_field :troop_number %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

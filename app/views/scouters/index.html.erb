@@ -1,0 +1,39 @@
+<h1>All Scouts</h1>
+<div id="scouter_wrapper">
+<table id="scouter_list">
+	<thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Age</th>
+    <th>Phone</th>
+    <th></th>
+    <th></th>
+  </tr>
+	</thead>
+	<tbody>
+<% @scouters.each do |scouter| %>
+  <tr>
+    <td><%= link_to scouter.name, scouter %></td>
+    <td><%= scouter.email %></td>
+    <td><%= scouter.age %></td>
+    <td><%= scouter.phone %></td>
+    <td><%= link_to 'Edit', edit_scouter_path(scouter) %></td>
+    <td><%= link_to 'Remove', scouter, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+</div>
+<br />
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$('#scouter_list').dataTable({
+				"sPaginationType": "full_numbers",
+				"bJQueryUI": true,
+				"aaSorting": [[ 0, "asc" ]]
+		});
+	});
+</script>
+
+<%= link_to 'New Scouter', new_scouter_path %>

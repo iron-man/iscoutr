@@ -1,0 +1,41 @@
+<%= form_for(@meritbadge) do |f| %>
+  <% if @meritbadge.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meritbadge.errors.count, "error") %> prohibited this meritbadge from being saved:</h2>
+
+      <ul>
+      <% @meritbadge.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>: <%= f.text_field :name, :disabled => true %> <br />
+    
+	<table>
+		<thead>
+			<th>Designator</th>
+			<th>Description</th>
+			<th>Goal</th>
+			<th>Completed Date</th>
+		</thead>
+		<tbody>
+			<%= f.fields_for :requirements, @requirements do |requirement| %>
+			<tr>
+				<td><%= requirement.text_field :designation, :disabled => true %></td>
+				<td><%= requirement.text_area :description, :size => "30x5" %></td>
+				<td><%= requirement.text_area :goal, :size => "30x5" %></td>
+				<td><%= requirement.text_field :completed_date %></td>
+			</tr>
+			<%- end -%>
+		</tbody>
+	</table>
+
+
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

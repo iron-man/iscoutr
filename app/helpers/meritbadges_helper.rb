@@ -1,0 +1,2 @@
+module MeritbadgesHelper
+end

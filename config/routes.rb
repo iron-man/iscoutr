@@ -1,4 +1,14 @@
 Icoustr::Application.routes.draw do
+  resources :scout_masters
+
+  resources :requirements
+
+  match 'meritbadges/enroll/' => 'meritbadges#enroll'
+
+  resources :meritbadges
+
+  resources :scouters
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  scouter_id: 1
+  meritbadge_id: 1
+  completed_date: 2011-09-06
+
+two:
+  scouter_id: 1
+  meritbadge_id: 1
+  completed_date: 2011-09-06

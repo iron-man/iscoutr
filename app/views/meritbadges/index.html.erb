@@ -1,0 +1,29 @@
+<h1>Listing meritbadges</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Date Obsoleted</th>
+	<th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @meritbadges.each do |meritbadge| %>
+  <%- unless meritbadge.removed_date.nil? %>
+  <tr class="obsoleted">
+  <%- else %>
+  <tr>
+  <%- end -%>	
+    <td><%= meritbadge.name %></td>
+	<td><%= meritbadge.removed_date %></td>
+    <td><%= link_to 'Show', meritbadge %></td>
+    <td><%= link_to 'Edit', edit_meritbadge_path(meritbadge) %></td>
+    <td><%= link_to 'Destroy', meritbadge, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Meritbadge', new_meritbadge_path %>

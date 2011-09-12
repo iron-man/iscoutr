@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+<div id="scouter_info">
+
+	<%= image_tag("avatar_male_light_on_gray_200x200.png", :size => "182x182", :id => "scouter_avatar") %>
+  <!-- Fancy Avatars, © 2009 Brandon Mathis, http://brandonmathis.com/projects/fancy-avatars/ -->
+  <label>Name:</label>
+  <span><%= @scouter.name %></span><br />
+
+  <label>Email:</label>
+  <span><%= mail_to @scouter.email %></span><br />
+
+  <label>Age:</label>
+  <span><%= @scouter.age %></span><br />
+
+  <label>Phone:</label>
+  <span><%= @scouter.phone %></span><br />
+
+	<div id="scout_master">
+		Scout Master <br />
+		<%= link_to @scouter.scout_master.first.name, @scouter.scout_master %>
+	</div>
+
+	<div class="link_bar">
+		<%= link_to 'Edit', edit_scouter_path(@scouter) %> |
+		<%= link_to 'Back', scouters_path %>
+	</div>
+</div>
+<br />
+<div id="meritbadge_list_wrapper">
+<%= render :partial => "partials/meritbadge_list", :locals => {:meritbadge_list => @meritbadges, 
+															   :scouter => @scouter,
+															   :status => @status} %>
+</div>
+
