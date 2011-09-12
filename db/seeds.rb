@@ -10,5 +10,8 @@
   ActiveRecord::Base.connection.execute("TRUNCATE table requirements") 
   
   config = ActiveRecord::Base.configurations['development']
-  system("mysql --user=#{config['username']} --password=#{config['password']} #{config['database']} < db/seed_meritbadges.sql")
-  system("mysql --user=#{config['username']} --password=#{config['password']} #{config['database']} < db/seed_requirements.sql")
+  # system("mysql --user=#{config['username']} --password=#{config['password']} #{config['database']} < db/seed_meritbadges.sql")
+  # system("mysql --user=#{config['username']} --password=#{config['password']} #{config['database']} < db/seed_requirements.sql")
+
+  system("psql --user=#{config['username']} --password=#{config['password']} #{config['database']} db/seed_meritbadges.sql")
+  system("psql --user=#{config['username']} --password=#{config['password']} #{config['database']} db/seed_requirements.sql")
