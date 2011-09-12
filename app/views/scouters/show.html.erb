@@ -17,7 +17,7 @@
 
 	<div id="scout_master">
 		Scout Master <br />
-		<%= link_to @scouter.scout_master.first.name, @scouter.scout_master %>
+		<%= link_to @scouter.scout_master.first.name, @scouter.scout_master unless @scouter.scout_master.first.nil? %>
 	</div>
 
 	<div class="link_bar">
