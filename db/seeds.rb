@@ -9,7 +9,7 @@
   ActiveRecord::Base.connection.execute("TRUNCATE table meritbadges") 
   ActiveRecord::Base.connection.execute("TRUNCATE table requirements") 
   
-  config = ActiveRecord::Base.configurations['development']
+  config = ActiveRecord::Base.configurations['production']
   # system("mysql --user=#{config['username']} --password=#{config['password']} #{config['database']} < db/seed_meritbadges.sql")
   # system("mysql --user=#{config['username']} --password=#{config['password']} #{config['database']} < db/seed_requirements.sql")
 
