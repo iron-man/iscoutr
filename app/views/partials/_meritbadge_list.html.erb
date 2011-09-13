@@ -19,7 +19,7 @@
 	<td><%= meritbadge.removed_date %></td>
 	<%- if status && !status.blank? && status[0].scouter_id == scouter.id && status[0].meritbadge_id == meritbadge.id -%>
 		<td><button disabled="disabled">Enrolled!</button></td>
-	<%- elsif status[0].completed_date -%>
+	<%- elsif !status.blank? && status[0].completed_date -%>
 		<td><button disabled="disabled">Completed</button></td>	
 	<%- elsif meritbadge.removed_date -%>
 		<td><button disabled="disabled">Obsolete</button></td>
