@@ -14,7 +14,7 @@
   <%- else %>
   <tr>
   <%- end -%>
-	<td><%= image_tag(meritbadge.image_url, :size => "75x75") unless meritbadge.removed_date %></td>
+	<td><%= image_tag(meritbadge.image_url, :size => "75x75") unless meritbadge.nil? || meritbadge.removed_date %></td>
     <td><%= link_to meritbadge.name, meritbadge %></td>
 	<td><%= meritbadge.removed_date %></td>
 	<%- if status && !status.blank? && status[0].scouter_id == scouter.id && status[0].meritbadge_id == meritbadge.id -%>
