@@ -10,10 +10,18 @@ class ScoutMastersController < ApplicationController
     end
   end
 
+  def claim_scout
+    scout_master = ScoutMaster.find_by_id(params[:id])
+    scout_master.claim_scout(params[:scout_id])    
+    flash[:notice] = "Scout Claimed!"
+    redirect_to scout_master
+  end
+
   # GET /scout_masters/1
   # GET /scout_masters/1.xml
   def show
     @scout_master = ScoutMaster.find(params[:id])
+    @scouts = Scouter.all
 
     respond_to do |format|
       format.html # show.html.erb

@@ -17,17 +17,17 @@
 	<td><%= image_tag(meritbadge.image_url, :size => "75x75") unless meritbadge.nil? || meritbadge.image_url.nil? || meritbadge.removed_date %></td>
     <td><%= link_to meritbadge.name, meritbadge %></td>
 	<td><%= meritbadge.removed_date %></td>
-	<%- if status && !status.blank? && status[0].scouter_id == scouter.id && status[0].meritbadge_id == meritbadge.id -%>
+	<%- if status && !status.blank? && status.detect {|s| s.scouter_id == scouter.id && s.meritbadge_id == meritbadge.id && s.completed_date == nil} -%>
 		<td><button disabled="disabled">Enrolled!</button></td>
-	<%- elsif !status.blank? && status[0].completed_date -%>
+	<%- elsif !status.blank? && status.detect {|s| s.scouter_id == scouter.id && s.meritbadge_id == meritbadge.id && s.completed_date != nil} -%>
 		<td><button disabled="disabled">Completed</button></td>	
 	<%- elsif meritbadge.removed_date -%>
 		<td><button disabled="disabled">Obsolete</button></td>
 	<%- else -%>
-	<td><%= button_to "Enroll", {:controller => "meritbadges", 
+	<td><div id="enroll_button_<%= "#{scouter.id}_#{meritbadge.id}" %>"><%= button_to "Enroll", {:controller => "scouters", 
 								 :action => "enroll", 
 								 :meritbadge_id => meritbadge.id,
-								 :scouter_id => scouter.id } %></td>
+								 :scouter_id => scouter.id }, :remote => true %></div></td>
 	<%- end -%>							
   </tr>
 <% end %>

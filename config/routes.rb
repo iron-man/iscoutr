@@ -1,9 +1,10 @@
-Icoustr::Application.routes.draw do
+Iscoutr::Application.routes.draw do
   resources :scout_masters
 
   resources :requirements
 
-  match 'meritbadges/enroll/' => 'meritbadges#enroll'
+  match 'scouters/enroll/' => 'scouters#enroll'
+  match 'scout_masters/claim_scout/' => 'scout_masters#claim_scout'
 
   resources :meritbadges
 

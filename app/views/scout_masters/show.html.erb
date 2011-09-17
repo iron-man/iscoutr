@@ -18,5 +18,12 @@
 <%- end -%>
 </ul>
 
+<h3>All Scouts</h3>
+<ul>
+	<%- @scouts.each do |scout| -%>
+		<%= link_to scout.name, scout %> - <%= button_to "Claim", {:action => "claim_scout", :id => @scout_master.id, :scout_id => scout.id } %>
+	<%- end -%>
+</ul>
+
 <%= link_to 'Edit', edit_scout_master_path(@scout_master) %> |
 <%= link_to 'Back', scout_masters_path %>

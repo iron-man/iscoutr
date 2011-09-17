@@ -1,0 +1,6 @@
+$("#enroll_button_<%= @scouter_id %>_<%= @meritbadge_id %>").html("<button disabled='disabled'>Enrolled!</button>");
+$("#notice").html('<%= escape_javascript(flash.delete(:notice)) %>');
+$('#notice').css({'background-color': '#ffe', 'height': '2em', 'font-size': '1.4em', 'padding': '5px', 'text-align': 'center', 'line-height': '2em'})
+// $('#notice').delay(500).fadeIn('normal', function() {
+//       $(this).delay(2500).fadeOut();
+//    });

@@ -1,26 +1,13 @@
 <p id="notice"><%= notice %></p>
+<%- if @meritbadge.requirements_text.nil? -%>
+<h1>Name: <%= @meritbadge.name  %></h1>
+<%- end -%>
 
-<h1>Name: <%= @meritbadge.name %></h1>
-
-<h2>Requirements: </h2>
-<table>
-	<thead>
-		<th>Designator</th>
-		<th>Description</th>
-		<th>Goal</th>
-		<th>Completed Date</th>
-	</thead>
-	<tbody>
-	<%- @requirements.each do |r| -%>
-		<tr>
-			<td><%= r.designation %></td>
-			<td><%= r.description %></td>
-			<td><%= r.goal %></td>
-			<td><%= r.completed_date %></td>
-		</tr>
-	<%- end -%>
-	</tbody>
-</table>
+<%=h @meritbadge.requirements_text.html_safe unless @meritbadge.requirements_text.nil? %>
+<%- unless @meritbadge.requirements_path.nil? %>
+<span id="credit">Original Requirements taken from <%= link_to 'scouting.org', @meritbadge.requirements_path %> </span>
+<%- end -%>
+<br />
 	
 <%= link_to 'Edit', edit_meritbadge_path(@meritbadge) %> |
 <%= link_to 'Back', meritbadges_path %>

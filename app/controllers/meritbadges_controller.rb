@@ -9,12 +9,6 @@ class MeritbadgesController < ApplicationController
       format.xml  { render :xml => @meritbadges }
     end
   end
-  
-  def enroll
-    status = ScouterMeritbadges.find_or_create_by_scouter_id_and_meritbadge_id(:scouter_id => params[:scouter_id], :meritbadge_id => params[:meritbadge_id])
-    flash[:notice] = "You have been enrolled!"
-    redirect_to :controller => "scouters", :action => "show", :id => params[:scouter_id]
-  end
 
   # GET /meritbadges/1
   # GET /meritbadges/1.xml

@@ -10,8 +10,23 @@
   ActiveRecord::Base.connection.execute("TRUNCATE table requirements") 
   
   config = ActiveRecord::Base.configurations[RAILS_ENV]
+  
+  sql_meritbadges = ""
+  sql_meritbadges = File.open("#{RAILS_ROOT}/db/seed_meritbadges.sql").read
+  sql_meritbadges = sql_meritbadges.gsub(/\n/," ")
+  sql_meritbadges = sql_meritbadges.gsub(/\"/,"'")
+  sql_meritbadges = sql_meritbadges.gsub(/\`/,"'")
+  Meritbadge.execute_sql(sql_meritbadges)
+  
+  sql_requirements = ""
+  sql_requirements = File.open("#{RAILS_ROOT}/db/seed_requirements.sql").read
+  sql_requirements = sql_requirements.gsub(/\n/," ")
+  sql_requirements = sql_requirements.gsub(/\"/,"'")
+  sql_requirements = sql_requirements.gsub(/\`/,"'")
+  Requirement.execute_sql(sql_requirements)
+  
   # system("mysql --user=#{config['username']} --password=#{config['password']} #{config['database']} < db/seed_meritbadges.sql")
   # system("mysql --user=#{config['username']} --password=#{config['password']} #{config['database']} < db/seed_requirements.sql")
 
-  system("psql -f db/seed_meritbadges.sql #{config['database']} ")
-  system("psql -f db/seed_requirements.sql #{config['database']} ")
+  # system("psql -f db/seed_meritbadges.sql #{config['database']} ")
+  # system("psql -f db/seed_requirements.sql #{config['database']} ")
