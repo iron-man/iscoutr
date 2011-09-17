@@ -11,13 +11,30 @@ class ScoutersController < ApplicationController
   end
 
   def enroll
-    status = ScouterMeritbadges.find_or_create_by_scouter_id_and_meritbadge_id(:scouter_id => params[:scouter_id], :meritbadge_id => params[:meritbadge_id])
-    flash[:notice] = "You have been enrolled!"
-    # redirect_to :controller => "scouters", :action => "show", :id => params[:scouter_id]
     @scouter_id = params[:scouter_id]
     @meritbadge_id = params[:meritbadge_id]
+    reqs = Requirement.find_all_by_meritbadge_id(@meritbadge_id)
+    temp = reqs.map {|t| t.designation}
+    return_array = []
+    temp.each do |req|
+      return_array << req.slice(/(\d)+/)
+      return_array.uniq!
+    end
+    
+    req_a_hash = []
+    return_array.each do |req|
+      req_a_hash << {req.to_s => {:text => "", :goal => "", :completed_date => ""}}
+    end
+    
+    requirements_hash = {@meritbadge_id => req_a_hash}
+    
+    # status = ScouterMeritbadges.find_or_create_by_scouter_id_and_meritbadge_id(:scouter_id => @scouter_id, :meritbadge_id => @meritbadge_id)
+    
+    status = ScouterMeritbadges.find_or_create_by_scouter_id_and_meritbadge_id(:scouter_id => @scouter_id, :meritbadge_id => @meritbadge_id, :requirements => requirements_hash)
+    flash[:notice] = "You have been enrolled!"
+    # redirect_to :controller => "scouters", :action => "show", :id => params[:scouter_id]
     respond_to do |format|
-      # format.html {redirect_to :controller => "scouters", :action => "show", :id => params[:scouter_id]}
+      format.html {redirect_to :controller => "scouters", :action => "show", :id => params[:scouter_id]}
       format.js 
     end
   end
