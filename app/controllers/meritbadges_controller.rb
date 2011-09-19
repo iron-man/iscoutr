@@ -2,7 +2,7 @@ class MeritbadgesController < ApplicationController
   # GET /meritbadges
   # GET /meritbadges.xml
   def index
-    @meritbadges = Meritbadge.find(:all, :order => "name ASC, removed_date ASC")
+    @meritbadges = Meritbadge.find(:all, :conditions => "removed_date IS NULL", :order => "name ASC, removed_date ASC")
 
     respond_to do |format|
       format.html # index.html.erb
