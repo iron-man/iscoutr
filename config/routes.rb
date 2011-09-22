@@ -1,4 +1,5 @@
 Iscoutr::Application.routes.draw do
+
   resources :scout_masters
 
   resources :requirements
@@ -6,10 +7,23 @@ Iscoutr::Application.routes.draw do
   match 'scouters/enroll/' => 'scouters#enroll'
   match 'scout_masters/claim_scout/' => 'scout_masters#claim_scout'
 
+  match 'meritbadges/:id/req_update' => 'meritbadges#req_update'
+  
   resources :meritbadges
+  
+  devise_for :scouters
+  
+  # match '/scouters' => "scouters#show", :as => :scouters_root
+
+  # namespace :scouters do
+  #     root :to => "scouters#show"
+  # end
 
   resources :scouters
 
+  
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

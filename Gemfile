@@ -9,6 +9,7 @@ gem 'sqlite3', '1.3.3'
 gem 'ruby-mysql', '2.9.3'
 gem 'possessive'
 gem 'nokogiri'
+gem 'devise'
 
 group :development do
   gem 'rspec-rails', '2.6.1'

@@ -24,6 +24,8 @@ namespace :db do
         meritbadge_title = meritbadge_title.gsub(/Designand/, "Design and")
       elsif meritbadge_title =~ /Inthe/
         meritbadge_title = meritbadge_title.gsub(/Inthe/, "In the")
+      elsif meritbadge_title == "Communications"
+        meritbadge_title == "Communication"
       end
       
       new_url = "http://www.scouting.org/scoutsource" + meritbadge_entry[:link]
@@ -53,4 +55,25 @@ namespace :db do
       # end     
     end
   end
+  
+  desc "Get list of required meritbadges and load into our table"
+  task :load_required_mbs => :environment do
+    require 'rubygems'
+    require 'nokogiri'
+    require 'open-uri'
+  
+    url = "http://www.scouting.org/scoutsource/Media/InsigniaGuide/06D.aspx"
+    doc = Nokogiri::HTML(open(url))
+      
+    doc.css("div#middle-element > ul > li").each do |link|
+      title = link.text.split(" -")
+      if title[0].to_s == "Communications"
+        title[0] = "Communication"
+      end
+      puts title[0]
+      meritbadge = Meritbadge.find_by_name(title[0], :conditions => "removed_date IS NULL")
+        meritbadge.update_attributes(:required => 1) unless meritbadge.nil? 
+    end      
+  end
+  
 end

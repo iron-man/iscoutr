@@ -1,4 +1,5 @@
 class ScoutersController < ApplicationController
+  before_filter :authenticate_scouter!
   # GET /scouters
   # GET /scouters.xml
   def index
@@ -21,12 +22,12 @@ class ScoutersController < ApplicationController
       return_array.uniq!
     end
     
-    req_a_hash = []
+    requirements_hash = []
     return_array.each do |req|
-      req_a_hash << {req.to_s => {:text => "", :goal => "", :completed_date => ""}}
+      requirements_hash << {:designation => req.to_s, :description => "", :goal => "", :completed_date => ""}
     end
     
-    requirements_hash = {@meritbadge_id => req_a_hash}
+    # requirements_hash = {@meritbadge_id => req_a_hash}
     
     # status = ScouterMeritbadges.find_or_create_by_scouter_id_and_meritbadge_id(:scouter_id => @scouter_id, :meritbadge_id => @meritbadge_id)
     
@@ -66,6 +67,7 @@ class ScoutersController < ApplicationController
   # GET /scouters/1/edit
   def edit
     @scouter = Scouter.find(params[:id])
+    @scouter.update_attributes(params)
   end
 
   # POST /scouters

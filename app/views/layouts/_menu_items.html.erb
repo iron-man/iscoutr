@@ -1,0 +1,18 @@
+<% if scouter_signed_in? %>
+	<li>
+    <%= link_to 'Logout', destroy_scouter_session_path, :method => :delete %>
+  </li>
+  <li>
+    <%= link_to 'Edit registration', edit_scouter_registration_path %>
+  </li>
+  <li>
+  	<%= link_to 'Scouts', scouters_path %>
+  </li>
+<% else %>
+  <li> 
+  <%= link_to('Login', new_scouter_session_path) %>
+  </li>
+  <li>
+  <%= link_to('Register', new_scouter_registration_path)  %>
+  </li>
+<% end %>

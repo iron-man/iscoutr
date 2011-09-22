@@ -1,19 +1,17 @@
-<%= form_for(@meritbadge) do |f| %>
-  <% if @meritbadge.errors.any? %>
+<%= form_for :scouter_meritbadge, :url => "req_update" do |f| %>
+  <% if @requirements.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@meritbadge.errors.count, "error") %> prohibited this meritbadge from being saved:</h2>
+      <h2><%= pluralize(@requirements.errors.count, "error") %> prohibited this meritbadge from being saved:</h2>
 
       <ul>
-      <% @meritbadge.errors.full_messages.each do |msg| %>
+      <% @requirements.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>: <%= f.text_field :name, :disabled => true %> <br />
-    
+  <div class="field">    
 	<table>
 		<thead>
 			<th>Designator</th>
@@ -22,14 +20,18 @@
 			<th>Completed Date</th>
 		</thead>
 		<tbody>
-			<%= f.fields_for :requirements, @requirements do |requirement| %>
-			<tr>
-				<td><%= requirement.text_field :designation, :disabled => true %></td>
-				<td><%= requirement.text_area :description, :size => "30x5" %></td>
-				<td><%= requirement.text_area :goal, :size => "30x5" %></td>
-				<td><%= requirement.text_field :completed_date %></td>
-			</tr>
-			<%- end -%>
+				<% unless @requirements.nil? %>
+				<% @requirements.requirements.each_with_index do |req, index| %>
+				<% unless req.nil? %>
+				<tr>
+				<td><%= text_field :designation, req["designation"], :disabled => true, :value => req["designation"] %></td>
+				<td><%= text_area :description, req["designation"], :size => "30x5", :value => req["description"] %></td>
+				<td><%= text_area :goal, req["designation"], :size => "30x5", :value => req["goal"] %></td>
+				<td><%= text_field :completed_date, req["designation"], :value => req["completed_date"] %></td>
+				</tr>
+				<% end %>
+				<% end %>
+				<% end %>
 		</tbody>
 	</table>
 

@@ -2,12 +2,20 @@
 <html>
 <head>
   <title>IScoutr</title>
-  <%= stylesheet_link_tag 'main', 'trontastic/jquery-ui', 'data_table_jui' %>
+  <%= stylesheet_link_tag 'main', 'overcast/jquery-ui', 'data_table_jui' %>
 	<%= javascript_include_tag :all %>	
   <%= csrf_meta_tag %>
 </head>
 <body>
 <div id="content">
+	<ul class="hmenu">
+	  <%= render 'layouts/menu_items' %>
+	</ul>
+	<span id="logged_in_as">
+		<%= render 'layouts/logged_in_as' %>
+	</span>
+	<p id="notice" class="notice"><%= notice %></p>
+	<p id="alert" class="alert"><%= alert %></p>
 <%= yield %>
 </div>
 </body>

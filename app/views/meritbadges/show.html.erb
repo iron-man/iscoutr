@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <%- if @meritbadge.requirements_text.nil? -%>
 <h1>Name: <%= @meritbadge.name  %></h1>
 <%- end -%>
@@ -8,6 +7,22 @@
 <span id="credit">Original Requirements taken from <%= link_to 'scouting.org', @meritbadge.requirements_path %> </span>
 <%- end -%>
 <br />
-	
+<% if scouter_signed_in? %>
+<h2>Meritbadge Progress</h2>
+  <ol id="progress_list">
+	<% unless @requirements.nil? || @requirements.requirements.nil? %>
+	<% @requirements.requirements.each_with_index do |req, index| %>
+	  <li><div>
+			<span class="requirement_label">Description:</span> <%= req[:description.to_s] %> <br /> <hr /> 
+			<span class="requirement_label">Goal:</span> <%= req[:goal.to_s] %> <br /> <hr />
+			<span class="requirement_label">Completed Date:</span> <%= req[:completed_date.to_s] %> 
+			</div>
+		</li>
+	<% end %>
+	<% end %>
+	</ol>
+<% end %>	
+<% if scouter_signed_in? && !@requirements.nil? %>
 <%= link_to 'Edit', edit_meritbadge_path(@meritbadge) %> |
+<% end %>
 <%= link_to 'Back', meritbadges_path %>
