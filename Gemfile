@@ -10,6 +10,7 @@ gem 'ruby-mysql', '2.9.3'
 gem 'possessive'
 gem 'nokogiri'
 gem 'devise'
+gem 'factory_girl_rails'
 
 group :development do
   gem 'rspec-rails', '2.6.1'

@@ -11,4 +11,7 @@ class Scouter < ActiveRecord::Base
   has_many :scout_masters
   has_many :meritbadges
   has_many :requirements, :through => :meritbadges
+  
+  validates :name, :presence => true
+  
 end

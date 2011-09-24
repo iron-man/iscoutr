@@ -3,7 +3,7 @@
   <tr>
 	<td>Image</td>
     <th>Name</th>
-    <th>Date Obsoleted</th>
+    <th>Required?</th>
 	<th>Enroll in Meritbadge?</th>
   </tr>
 	<thead>
@@ -16,7 +16,7 @@
   <%- end -%>
 	<td><%= image_tag(meritbadge.image_url, :size => "75x75") unless meritbadge.nil? || meritbadge.image_url.nil? || meritbadge.removed_date %></td>
     <td><%= link_to meritbadge.name, meritbadge %></td>
-	<td><%= meritbadge.removed_date %></td>
+	<td><%= meritbadge.required ? "Required" : "" %></td>
 	<%- if status && !status.blank? && status.detect {|s| s.scouter_id == scouter.id && s.meritbadge_id == meritbadge.id && s.completed_date == nil} -%>
 		<td><button disabled="disabled">Enrolled!</button></td>
 	<%- elsif !status.blank? && status.detect {|s| s.scouter_id == scouter.id && s.meritbadge_id == meritbadge.id && s.completed_date != nil} -%>

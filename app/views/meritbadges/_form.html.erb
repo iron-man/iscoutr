@@ -20,14 +20,14 @@
 			<th>Completed Date</th>
 		</thead>
 		<tbody>
-				<% unless @requirements.nil? %>
+				<% unless @requirements.nil? || @requirements.requirements.nil? %>
 				<% @requirements.requirements.each_with_index do |req, index| %>
 				<% unless req.nil? %>
 				<tr>
 				<td><%= text_field :designation, req["designation"], :disabled => true, :value => req["designation"] %></td>
 				<td><%= text_area :description, req["designation"], :size => "30x5", :value => req["description"] %></td>
 				<td><%= text_area :goal, req["designation"], :size => "30x5", :value => req["goal"] %></td>
-				<td><%= text_field :completed_date, req["designation"], :value => req["completed_date"] %></td>
+				<td><%= text_field :completed_date, req["designation"], :value => req["completed_date"], :type => "date" %></td>
 				</tr>
 				<% end %>
 				<% end %>
