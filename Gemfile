@@ -9,7 +9,7 @@ gem 'sqlite3', '1.3.3'
 gem 'ruby-mysql', '2.9.3'
 gem 'possessive'
 gem 'nokogiri'
-gem 'devise', '1.4.6', :git => 'git://github.com/plataformatec/devise.git'
+gem 'devise', '1.4.7', :git => 'https://github.com/plataformatec/devise.git'
 
 group :development do
   gem 'rspec-rails', '2.6.1'
