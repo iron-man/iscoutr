@@ -9,6 +9,7 @@ gem 'sqlite3', '1.3.3'
 gem 'ruby-mysql', '2.9.3'
 gem 'possessive'
 gem 'nokogiri'
+gem 'devise'
 
 group :development do
   gem 'rspec-rails', '2.6.1'
@@ -20,9 +21,7 @@ group :test do
 end
 
 group :development, :test do
-	gem 'devise'
 	gem 'factory_girl_rails'
-
 end
 
 # Use unicorn as the web server
