@@ -27,7 +27,7 @@
 				<td><%= text_field :designation, req["designation"], :disabled => true, :value => req["designation"] %></td>
 				<td><%= text_area :description, req["designation"], :size => "30x5", :value => req["description"] %></td>
 				<td><%= text_area :goal, req["designation"], :size => "30x5", :value => req["goal"] %></td>
-				<td><%= text_field :completed_date, req["designation"], :value => req["completed_date"], :type => "date" %></td>
+				<td><%= text_field :completed_date, req["designation"], :value => req["completed_date"], :type => "date", :class => "datepicker" %></td>
 				</tr>
 				<% end %>
 				<% end %>
@@ -41,3 +41,6 @@
     <%= f.submit %>
   </div>
 <% end %>
+<script type="text/javascript" charset="utf-8">
+	$(".datepicker").datepicker();
+</script>
