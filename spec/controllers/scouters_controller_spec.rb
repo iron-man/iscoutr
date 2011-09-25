@@ -16,7 +16,6 @@ describe ScoutersController do
   
   describe "GET index" do
     it "assigns @scouters" do
-      # scouts = Scouter.create(:name => "John", :email => "jdoe@example.com")
       get :index
       @scouter.should_not be_nil
       assigns(:scouters).should_not be_nil 
@@ -69,12 +68,21 @@ describe ScoutersController do
         post 'enroll', :scouter_id => @scouter.id, :meritbadge_id => @meritbadge.id
       }.to change{ScouterMeritbadges.count}.from(0).to(1)
       response.should redirect_to(:action => "show", :id => @scouter.id)
-      flash[:notice].should eq("You have been enrolled!")
-      
-      # response.body.should have_selector("div[id='enroll_button_#{@scouter.id}_#{@meritbadge.id}'] > input[type='button']", :content => "Enrolled!")
+      flash[:notice].should eq("You have been enrolled!")      
     end
-    
-    
+  end
+  
+  describe "GET 'scouters list' via xml" do
+    it "should have a list of scouters" do
+      get 'index', :format => "xml"
+      response.content_type.should eq("application/xml")
+      response.should have_selector("scouters[type='array']")
+      response.should have_selector("scouter > age")
+      response.should have_selector("scouter > email")
+      response.should have_selector("scouter > name")
+      response.should have_selector("scouter > phone")
+      response.should have_selector("scouter > troop-number")
+    end
   end
       
 end

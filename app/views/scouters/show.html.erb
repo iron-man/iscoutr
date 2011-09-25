@@ -9,7 +9,7 @@
   <span><%= mail_to @scouter.email %></span><br />
 
   <label>Age:</label>
-  <span><%= @scouter.age %></span><br />
+  <span><%= @scouter.age.to_i %></span><br />
 
   <label>Phone:</label>
   <span><%= @scouter.phone %></span><br />
@@ -22,8 +22,7 @@
 	</div>
 
 	<div class="link_bar">
-		<%= link_to 'Edit', edit_scouter_path(@scouter) %> |
-		<%= link_to 'Back', scouters_path %>
+		<%= link_to 'Edit', edit_scouter_registration_path %>
 	</div>
 </div>
 <br />

@@ -43,7 +43,11 @@ class ScoutersController < ApplicationController
   # GET /scouters/1
   # GET /scouters/1.xml
   def show
-    @scouter = Scouter.find(params[:id])
+    if params[:id]
+      @scouter = Scouter.find(params[:id])
+    else
+      @scouter = current_scouter 
+    end  
     @meritbadges = Meritbadge.find(:all, :conditions => "removed_date IS NULL", :order => "name ASC, removed_date ASC")
     @status = ScouterMeritbadges.find_all_by_scouter_id(params[:id])
     
